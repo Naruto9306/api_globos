@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,8 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-91pgq8)am5#p4w@*wl@-7g-ted6q55o&wh!$4=i(i13lpi$r(!'
 
+# Leer la clave secreta de un archivo
+# with open('./globos/key.txt') as f:
+#     SECRET_KEY = f.read().strip()
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 ALLOWED_HOSTS = ['localhost', 'naruto9306.github.io']
 
@@ -131,6 +137,14 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:4200",
     "https://naruto9306.github.io",
 ]
+
+#SECURE_SSL_REDIRECT = False
+
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
+
+#SECURE_HSTS_SECONDS = 100
 
 #Servidor de correo
 DEFAULT_FROM_EMAIL = 'pedro.moran93@yahoo.com'
